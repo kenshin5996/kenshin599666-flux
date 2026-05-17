@@ -309,8 +309,8 @@ const seasonOneEpisodes: SeasonEpisode[] = [
 const seasonTwoEpisodes: SeasonEpisode[] = [
   {
     number: 1,
-    title: "Retour de Romain Moretti",
-    videoId: "",
+    title: "Romain Moretti",
+    videoId: "yCe_-ucDFkI",
     description: "Bientôt l'aventure.",
   },
 ];

@@ -310,7 +310,7 @@ const seasonTwoEpisodes: SeasonEpisode[] = [
   {
     number: 1,
     title: "Retour de Romain Moretti",
-    videoId: "yCe_-ucDFkI",
+    videoId: "",
     description: "Bientôt l'aventure.",
   },
 ];
@@ -500,12 +500,12 @@ const marvelSeasons: MarvelSeason[] = [
 ];
 
 const banners = [
-  "/image/banner-mafia.jpg",
+  "/image/banner-rayan.png",
+  "/image/banner-romain-moretti.png",
+  "/image/banner-marvel.png",
+  "/image/banner-mafia.png",
   "/image/banner-police.png",
-  "/image/banner-rayan.jpg",
-  "/image/banner-romain-moretti.jpg",
 ];
-
 const sponsors: SponsorItem[] = [
   {
     id: "freecash-1",

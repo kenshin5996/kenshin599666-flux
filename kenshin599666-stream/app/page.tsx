@@ -293,18 +293,19 @@ const seasonOneEpisodes: SeasonEpisode[] = [
   {
     number: 9,
     title: "Action et évolution",
-    videoId: "AoYDnvcilRI",
+    videoId: "0ka_Zr6zN3Q",
     description:
       "Rayan doit s’adapter, avancer vite et tenir sa place dans un monde impitoyable.",
   },
   {
     number: 10,
-    title: "Le commencement",
-    videoId: "0ka_Zr6zN3Q",
+    title: "le retour de rayan moretti 20/06/2026",
+    videoId: "5lWcRK0curA",
     description:
       "L’un des épisodes fondateurs de l’univers RP, là où tout commence vraiment.",
   },
 ];
+
 
 const seasonTwoEpisodes: SeasonEpisode[] = [
   {
@@ -312,6 +313,13 @@ const seasonTwoEpisodes: SeasonEpisode[] = [
     title: "Romain Moretti",
     videoId: "yCe_-ucDFkI",
     description: "Bientôt l'aventure.",
+  },
+
+ {
+    number: 2,
+    title: "Romain Moretti",
+    videoId: "A5GqLxplN88",
+    description: "Romain moretti.",
   },
 ];
 

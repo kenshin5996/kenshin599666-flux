@@ -317,7 +317,7 @@ const seasonTwoEpisodes: SeasonEpisode[] = [
 
   {
     number: 2,
-    title: "Le retour de Rayan Moretti",
+    title: "Romain Moretti nouvelle journée",
     videoId: "A5GqLxplN88",
     description: "Rayan revient avec une nouvelle ambition.",
   },

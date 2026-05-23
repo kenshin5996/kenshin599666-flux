@@ -25,6 +25,12 @@ type MarvelSeason = {
   episodes: SeasonEpisode[];
 };
 
+type RayanSeason = {
+  season: number;
+  title: string;
+  episodes: SeasonEpisode[];
+};
+
 type SponsorItem = {
   id: string;
   name: string;
@@ -297,13 +303,7 @@ const seasonOneEpisodes: SeasonEpisode[] = [
     description:
       "Rayan doit s’adapter, avancer vite et tenir sa place dans un monde impitoyable.",
   },
-  {
-    number: 10,
-    title: "le retour de rayan moretti 20/06/2026",
-    videoId: "5lWcRK0curA",
-    description:
-      "L’un des épisodes fondateurs de l’univers RP, là où tout commence vraiment.",
-  },
+  
 ];
 
 
@@ -312,14 +312,47 @@ const seasonTwoEpisodes: SeasonEpisode[] = [
     number: 1,
     title: "Romain Moretti",
     videoId: "yCe_-ucDFkI",
-    description: "Bientôt l'aventure.",
+    description: "Bientôt l’aventure.",
   },
 
- {
+  {
     number: 2,
-    title: "Romain Moretti",
+    title: "Le retour de Rayan Moretti",
     videoId: "A5GqLxplN88",
-    description: "Romain moretti.",
+    description: "Rayan revient avec une nouvelle ambition.",
+  },
+
+  {
+    number: 3,
+    title: "Nouvelle organisation",
+    videoId: "",
+    description: "Bientôt disponible.",
+  },
+];
+
+const rayanSeasons: RayanSeason[] = [
+  {
+    season: 1,
+    title: "Rayan Moretti / Saison 1",
+    episodes: seasonOneEpisodes,
+  },
+  {
+    season: 2,
+    title: "Rayan Moretti / Saison 2",
+    episodes: [
+      {
+        number: 1,
+        title: "Le retour de Rayan Moretti",
+        videoId: "5lWcRK0curA",
+        description: "Rayan revient en ville avec une nouvelle vision 20/06/2026 La suite.",
+      },
+      {
+        number: 2,
+        title: "Nouvelle vie, nouvelles règles",
+        videoId: "",
+        description: "Une nouvelle aventure commence pour Rayan Moretti.",
+      },
+    ],
   },
 ];
 
@@ -1350,6 +1383,12 @@ export default function Page() {
   const [profileLogo, setProfileLogo] = useState<string | null>(null);
   const [openBook, setOpenBook] = useState(false);
 
+  const [selectedRayanSeason, setSelectedRayanSeason] = useState(1);
+
+  const currentRayanSeason =
+    rayanSeasons.find((season) => season.season === selectedRayanSeason) ||
+    rayanSeasons[0];
+
   const [selectedSeasonEpisode, setSelectedSeasonEpisode] =
     useState<SeasonEpisode>(seasonOneEpisodes[0]);
 
@@ -1814,7 +1853,31 @@ export default function Page() {
 
       <section className="section iproSeasonSection" id="rayan-moretti-saison-1">
         <div className="iproSeasonHeader">
-          <span className="iproSeasonBadge">SAISON 1</span>
+          <span className="iproSeasonBadge">
+            SAISON {currentRayanSeason?.season || 1}
+          </span>
+
+          <div
+            style={{
+              display: "flex",
+              gap: "12px",
+              marginTop: "14px",
+              flexWrap: "wrap",
+            }}
+          >
+            {rayanSeasons.map((season) => (
+              <button
+                key={season.season}
+                type="button"
+                onClick={() => setSelectedRayanSeason(season.season)}
+                className={`iproSeasonSwitchBtn ${
+                  selectedRayanSeason === season.season ? "active" : ""
+                }`}
+              >
+                Saison {season.season}
+              </button>
+            ))}
+          </div>
         </div>
 
         <div className="iproSeasonLayout">
@@ -1838,7 +1901,7 @@ export default function Page() {
           </div>
 
           <div className="iproEpisodesList">
-            {seasonOneEpisodes.map((episode) => (
+            {currentRayanSeason.episodes.map((episode) => (
               <SeasonEpisodeCard
                 key={episode.videoId}
                 episode={episode}

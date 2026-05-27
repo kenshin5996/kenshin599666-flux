@@ -324,9 +324,9 @@ const seasonTwoEpisodes: SeasonEpisode[] = [
 
   {
     number: 3,
-    title: "Nouvelle organisation",
-    videoId: "",
-    description: "Bientôt disponible.",
+    title: "Romain Moretti tester le métier Uber",
+    videoId: "EJgG4ECqjRY",
+    description: "Romain Moretti.",
   },
 ];
 

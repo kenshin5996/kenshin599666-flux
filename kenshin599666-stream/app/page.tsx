@@ -343,7 +343,7 @@ const rayanSeasons: RayanSeason[] = [
       {
         number: 1,
         title: "Le retour de Rayan Moretti",
-        videoId: "5lWcRK0curA",
+        videoId: "yIKYq8ywRxU",
         description: "Rayan revient en ville avec une nouvelle vision 20/09/2026 La suite.",
       },
       {

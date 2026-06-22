@@ -329,9 +329,9 @@ const seasonTwoEpisodes: SeasonEpisode[] = [
     description: "Romain Moretti.",
   },
 {
-    number: 3,
+    number: 4,
     title: "ROMAIN MORETTI : LA PIRE JOURNÉE DE MA VIE ! 😱",
-    videoId: "32WgsVtzPBM",
+    videoId: "XGAOsUN0wXM",
     description: "dsl pour les voix fort.",
   },
 ];

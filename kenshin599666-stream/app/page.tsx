@@ -346,6 +346,12 @@ const seasonTwoEpisodes: SeasonEpisode[] = [
     videoId: "HgxWlICzWDU",
     description: "Une lettre mystérieuse au nom de Rayan relance toute l’enquête.",
   },
+ {
+    number: 7,
+    title: "😱 La grotte maudite de Rayan Moretti ? Les révélations deviennent terrifiantes !",
+    videoId: "Whaj_irgxV4",
+    description: "Après avoir découvert plusieurs documents appartenant à Rayan Moretti, Romain Moretti continue son enquête dans la maison abandonnée.",
+  },
 ];
 
 const romainSeasonTwoEpisodes: SeasonEpisode[] = [

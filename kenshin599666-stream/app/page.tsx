@@ -330,9 +330,9 @@ const seasonTwoEpisodes: SeasonEpisode[] = [
   },
 {
     number: 4,
-    title: "ROMAIN MORETTI : LA PIRE JOURNÉE DE MA VIE ! 😱",
-    videoId: "XGAOsUN0wXM",
-    description: "dsl pour les voix fort.",
+    title: "🛵 JE TESTE LE MÉTIER D'ÉBOUEUR ET J'ACHÈTE MON PREMIER SCOOTER !",
+    videoId: "7Qbxg5D9U-U",
+    description: "Romain moretti.",
   },
 ];
 

@@ -312,29 +312,73 @@ const seasonTwoEpisodes: SeasonEpisode[] = [
     number: 1,
     title: "Romain Moretti",
     videoId: "yCe_-ucDFkI",
-    description: "Bientôt l’aventure.",
+    description: "Le début de l’histoire de Romain Moretti, frère de Rayan Moretti.",
   },
 
   {
     number: 2,
     title: "Romain Moretti nouvelle journée",
     videoId: "A5GqLxplN88",
-    description: "Rayan revient avec une nouvelle ambition.",
+    description: "Romain commence une nouvelle journée et cherche sa place en ville.",
   },
 
   {
     number: 3,
     title: "Romain Moretti tester le métier Uber",
     videoId: "EJgG4ECqjRY",
-    description: "Romain Moretti.",
+    description: "Romain tente un nouveau métier pour survivre et avancer.",
   },
-{
+  {
     number: 4,
     title: "🛵 JE TESTE LE MÉTIER D'ÉBOUEUR ET J'ACHÈTE MON PREMIER SCOOTER !",
     videoId: "7Qbxg5D9U-U",
-    description: "Romain moretti.",
+    description: "Romain travaille dur et achète enfin son premier scooter.",
+  },
+  {
+    number: 5,
+    title: "Romain Moretti cherche un abri pour dormir... et découvre un secret !",
+    videoId: "QYN6mni-hJo",
+    description: "Romain cherche un endroit où dormir, mais tombe sur un secret inquiétant.",
+  },
+  {
+    number: 6,
+    title: "Romain Moretti découvre une lettre au nom de son frère Rayan Moretti !",
+    videoId: "HgxWlICzWDU",
+    description: "Une lettre mystérieuse au nom de Rayan relance toute l’enquête.",
   },
 ];
+
+const romainSeasonTwoEpisodes: SeasonEpisode[] = [
+  {
+    number: 1,
+    title: "pas disponible...",
+    videoId: "",
+    description:
+      "pas disponible",
+  },
+  {
+    number: 2,
+    title: "????",
+    videoId: "",
+    description:
+      "pas disponible.",
+  },
+  
+];
+
+const romainSeasons: RayanSeason[] = [
+  {
+    season: 1,
+    title: "Romain Moretti / Saison 1",
+    episodes: seasonTwoEpisodes,
+  },
+  {
+    season: 2,
+    title: "Romain Moretti / Saison 2",
+    episodes: romainSeasonTwoEpisodes,
+  },
+];
+
 
 const rayanSeasons: RayanSeason[] = [
   {
@@ -1398,8 +1442,14 @@ export default function Page() {
   const [selectedSeasonEpisode, setSelectedSeasonEpisode] =
     useState<SeasonEpisode>(seasonOneEpisodes[0]);
 
+  const [selectedRomainSeason, setSelectedRomainSeason] = useState<number>(1);
+
+  const currentRomainSeason =
+    romainSeasons.find((season) => season.season === selectedRomainSeason) ??
+    romainSeasons[0];
+
   const [selectedSeasonTwoEpisode, setSelectedSeasonTwoEpisode] =
-    useState<SeasonEpisode>(seasonTwoEpisodes[0]);
+    useState<SeasonEpisode>(romainSeasons[0].episodes[0]);
 
   const [selectedMarvelSeason, setSelectedMarvelSeason] = useState<number>(1);
 
@@ -1429,6 +1479,12 @@ export default function Page() {
 
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    if (currentRomainSeason.episodes.length > 0) {
+      setSelectedSeasonTwoEpisode(currentRomainSeason.episodes[0]);
+    }
+  }, [currentRomainSeason]);
 
   useEffect(() => {
     if (currentMarvelSeason.episodes.length > 0) {
@@ -1965,7 +2021,7 @@ export default function Page() {
             <h3>STATUT</h3>
             <div className="iproLinksList">
               <span>🎬 Série disponible</span>
-              <span>📅 Saison 1 en cours</span>
+              <span>📅 Saison 2 ajoutée</span>
             </div>
           </aside>
         </div>
@@ -1976,7 +2032,21 @@ export default function Page() {
         id="romain-moretti-saison-1"
       >
         <div className="iproSeasonHeader">
-          <span className="iproSeasonBadge">SAISON 1</span>
+          <span className="iproSeasonBadge">{currentRomainSeason.title}</span>
+          <div className="iproSeasonSwitch">
+            {romainSeasons.map((season) => (
+              <button
+                key={season.season}
+                type="button"
+                onClick={() => setSelectedRomainSeason(season.season)}
+                className={`iproSeasonSwitchBtn ${
+                  selectedRomainSeason === season.season ? "active" : ""
+                }`}
+              >
+                Saison {season.season}
+              </button>
+            ))}
+          </div>
         </div>
 
         <div className="iproSeasonLayout">
@@ -2007,11 +2077,14 @@ export default function Page() {
           </div>
 
           <div className="iproEpisodesList">
-            {seasonTwoEpisodes.map((episode) => (
+            {currentRomainSeason.episodes.map((episode) => (
               <SeasonEpisodeCard
-                key={episode.videoId || `season-two-${episode.number}`}
+                key={episode.videoId || `romain-season-${currentRomainSeason.season}-${episode.number}`}
                 episode={episode}
-                isActive={selectedSeasonTwoEpisode.number === episode.number}
+                isActive={
+                  selectedSeasonTwoEpisode.number === episode.number &&
+                  currentRomainSeason.episodes.includes(selectedSeasonTwoEpisode)
+                }
                 onClick={() => setSelectedSeasonTwoEpisode(episode)}
               />
             ))}

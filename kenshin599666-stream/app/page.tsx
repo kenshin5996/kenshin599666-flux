@@ -352,6 +352,18 @@ const seasonTwoEpisodes: SeasonEpisode[] = [
     videoId: "Whaj_irgxV4",
     description: "Après avoir découvert plusieurs documents appartenant à Rayan Moretti, Romain Moretti continue son enquête dans la maison abandonnée.",
   },
+{
+    number: 8,
+    title: "🚗 Romain Moretti CHARBONNE pour acheter sa première voiture !",
+    videoId: "fkRLhVXzBGc",
+    description: "Aujourd'hui, Romain Moretti se lance un nouvel objectif : acheter sa première voiture ! 💰.",
+  },
+{
+    number: 9,
+    title: "Une journée dans une nouvelle ville 🐴",
+    videoId: "LipeeeyPgAA",
+    description: "On découvre la ville autrement, on explore les rues et les environs tout en essayant cette nouvelle expérience en RP🏙️✨.",
+  },
 ];
 
 const romainSeasonTwoEpisodes: SeasonEpisode[] = [

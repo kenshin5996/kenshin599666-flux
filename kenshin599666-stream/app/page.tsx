@@ -308,27 +308,59 @@ const seasonOneEpisodes: SeasonEpisode[] = [
 
 
 const seasonTwoEpisodes: SeasonEpisode[] = [
+
+
   {
     number: 1,
-    title: "Romain Moretti",
-    videoId: "yCe_-ucDFkI",
-    description: "Bientôt l’aventure.",
+    title: "Romain Moretti nouvelle journée",
+    videoId: "A5GqLxplN88",
+    description: "Romain commence une nouvelle journée et cherche sa place en ville.",
   },
 
   {
     number: 2,
-    title: "Romain Moretti nouvelle journée",
-    videoId: "A5GqLxplN88",
-    description: "Rayan revient avec une nouvelle ambition.",
-  },
-
-  {
-    number: 3,
     title: "Romain Moretti tester le métier Uber",
     videoId: "EJgG4ECqjRY",
-    description: "Romain Moretti.",
+    description: "Romain tente un nouveau métier pour survivre et avancer.",
+  },
+  {
+    number: 3,
+    title: "🛵 JE TESTE LE MÉTIER D'ÉBOUEUR ET J'ACHÈTE MON PREMIER SCOOTER !",
+    videoId: "7Qbxg5D9U-U",
+    description: "Romain travaille dur et achète enfin son premier scooter.",
+  },
+  {
+    number: 4,
+    title: "Romain Moretti cherche un abri pour dormir... et découvre un secret !",
+    videoId: "QYN6mni-hJo",
+    description: "Romain cherche un endroit où dormir, mais tombe sur un secret inquiétant.",
+  },
+  {
+    number: 5,
+    title: "Romain Moretti découvre une lettre au nom de son frère Rayan Moretti !",
+    videoId: "HgxWlICzWDU",
+    description: "Une lettre mystérieuse au nom de Rayan relance toute l’enquête.",
+  },
+ {
+    number: 6,
+    title: "😱 La grotte maudite de Rayan Moretti ? Les révélations deviennent terrifiantes !",
+    videoId: "Whaj_irgxV4",
+    description: "Après avoir découvert plusieurs documents appartenant à Rayan Moretti, Romain Moretti continue son enquête dans la maison abandonnée.",
+  },
+{
+    number: 7,
+    title: "🚗 Romain Moretti CHARBONNE pour acheter sa première voiture !",
+    videoId: "fkRLhVXzBGc",
+    description: "Aujourd'hui, Romain Moretti se lance un nouvel objectif : acheter sa première voiture ! 💰.",
+  },
+{
+    number: 8,
+    title: "Une journée dans une nouvelle ville 🐴",
+    videoId: "LipeeeyPgAA",
+    description: "On découvre la ville autrement, on explore les rues et les environs tout en essayant cette nouvelle expérience en RP🏙️✨.",
   },
 ];
+
 
 const rayanSeasons: RayanSeason[] = [
   {
@@ -376,48 +408,7 @@ const isaacWolfSeasons: RayanSeason[] = [
         description:
           "Isaac trouve un refuge, prépare ses armes et commence à comprendre les règles du territoire.",
       },
-      {
-        number: 3,
-        title: "La piste du loup",
-        videoId: "",
-        description:
-          "Une trace étrange mène Isaac vers la forêt, là où les loups semblent le reconnaître.",
-      },
-      {
-        number: 4,
-        title: "Les hors-la-loi de Valentine",
-        videoId: "",
-        description:
-          "Isaac croise des bandits et doit choisir entre éviter les ennuis ou défendre son honneur.",
-      },
-      {
-        number: 5,
-        title: "Une nuit sous la pleine lune",
-        videoId: "",
-        description:
-          "Autour du feu, Isaac entend les hurlements au loin et comprend que son destin est lié à la meute.",
-      },
-      {
-        number: 6,
-        title: "Le chasseur solitaire",
-        videoId: "",
-        description:
-          "Pour survivre, Isaac chasse, vend ses prises et commence à se faire un nom dans les villages.",
-      },
-      {
-        number: 7,
-        title: "Le camp attaqué",
-        videoId: "",
-        description:
-          "Son refuge est menacé. Isaac doit protéger ce qu’il a construit, même seul contre tous.",
-      },
-      {
-        number: 8,
-        title: "Le choix du loup",
-        videoId: "",
-        description:
-          "Entre vengeance et nouvelle vie, Isaac prend une décision qui change toute son histoire.",
-      },
+      
     ],
   },
   {
@@ -438,51 +429,11 @@ const isaacWolfSeasons: RayanSeason[] = [
         description:
           "Isaac protège ses terres face aux chasseurs de primes et aux gangs qui veulent le faire tomber.",
       },
-      {
-        number: 3,
-        title: "La meute se rassemble",
-        videoId: "",
-        description:
-          "De nouveaux alliés apparaissent, mais Isaac sait qu’une meute peut aussi cacher des traîtres.",
-      },
-      {
-        number: 4,
-        title: "Guerre entre clans",
-        videoId: "",
-        description:
-          "Les tensions explosent entre plusieurs groupes. Isaac doit choisir son camp et assumer les conséquences.",
-      },
-      {
-        number: 5,
-        title: "Le loup blessé",
-        videoId: "",
-        description:
-          "Trahi par une personne proche, Isaac disparaît dans la montagne pour préparer son retour.",
-      },
-      {
-        number: 6,
-        title: "Le grand hiver",
-        videoId: "",
-        description:
-          "Le froid, la faim et les ennemis poussent Isaac à ses limites. Seuls les plus forts survivent.",
-      },
-      {
-        number: 7,
-        title: "Dernier duel à Blackwater",
-        videoId: "",
-        description:
-          "Isaac affronte celui qui a voulu détruire son nom. Le duel peut devenir une légende.",
-      },
-      {
-        number: 8,
-        title: "La légende d’Isaac Wolf",
-        videoId: "",
-        description:
-          "Le nom d’Isaac Wolf commence à traverser tout l’Ouest. Certains le craignent, d’autres le respectent.",
-      },
+      
     ],
   },
 ];
+
 
 const marvelSeasons: MarvelSeason[] = [
   {

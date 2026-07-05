@@ -312,91 +312,23 @@ const seasonTwoEpisodes: SeasonEpisode[] = [
     number: 1,
     title: "Romain Moretti",
     videoId: "yCe_-ucDFkI",
-    description: "Le début de l’histoire de Romain Moretti, frère de Rayan Moretti.",
+    description: "Bientôt l’aventure.",
   },
 
   {
     number: 2,
     title: "Romain Moretti nouvelle journée",
     videoId: "A5GqLxplN88",
-    description: "Romain commence une nouvelle journée et cherche sa place en ville.",
+    description: "Rayan revient avec une nouvelle ambition.",
   },
 
   {
     number: 3,
     title: "Romain Moretti tester le métier Uber",
     videoId: "EJgG4ECqjRY",
-    description: "Romain tente un nouveau métier pour survivre et avancer.",
-  },
-  {
-    number: 4,
-    title: "🛵 JE TESTE LE MÉTIER D'ÉBOUEUR ET J'ACHÈTE MON PREMIER SCOOTER !",
-    videoId: "7Qbxg5D9U-U",
-    description: "Romain travaille dur et achète enfin son premier scooter.",
-  },
-  {
-    number: 5,
-    title: "Romain Moretti cherche un abri pour dormir... et découvre un secret !",
-    videoId: "QYN6mni-hJo",
-    description: "Romain cherche un endroit où dormir, mais tombe sur un secret inquiétant.",
-  },
-  {
-    number: 6,
-    title: "Romain Moretti découvre une lettre au nom de son frère Rayan Moretti !",
-    videoId: "HgxWlICzWDU",
-    description: "Une lettre mystérieuse au nom de Rayan relance toute l’enquête.",
-  },
- {
-    number: 7,
-    title: "😱 La grotte maudite de Rayan Moretti ? Les révélations deviennent terrifiantes !",
-    videoId: "Whaj_irgxV4",
-    description: "Après avoir découvert plusieurs documents appartenant à Rayan Moretti, Romain Moretti continue son enquête dans la maison abandonnée.",
-  },
-{
-    number: 8,
-    title: "🚗 Romain Moretti CHARBONNE pour acheter sa première voiture !",
-    videoId: "fkRLhVXzBGc",
-    description: "Aujourd'hui, Romain Moretti se lance un nouvel objectif : acheter sa première voiture ! 💰.",
-  },
-{
-    number: 9,
-    title: "Une journée dans une nouvelle ville 🐴",
-    videoId: "LipeeeyPgAA",
-    description: "On découvre la ville autrement, on explore les rues et les environs tout en essayant cette nouvelle expérience en RP🏙️✨.",
+    description: "Romain Moretti.",
   },
 ];
-
-const romainSeasonTwoEpisodes: SeasonEpisode[] = [
-  {
-    number: 1,
-    title: "pas disponible...",
-    videoId: "",
-    description:
-      "pas disponible",
-  },
-  {
-    number: 2,
-    title: "????",
-    videoId: "",
-    description:
-      "pas disponible.",
-  },
-  
-];
-
-const romainSeasons: RayanSeason[] = [
-  {
-    season: 1,
-    title: "Romain Moretti / Saison 1",
-    episodes: seasonTwoEpisodes,
-  },
-  {
-    season: 2,
-    title: "Romain Moretti / Saison 2",
-    episodes: romainSeasonTwoEpisodes,
-  },
-];
-
 
 const rayanSeasons: RayanSeason[] = [
   {
@@ -411,14 +343,142 @@ const rayanSeasons: RayanSeason[] = [
       {
         number: 1,
         title: "Le retour de Rayan Moretti",
-        videoId: "yIKYq8ywRxU",
-        description: "Rayan revient en ville avec une nouvelle vision 20/09/2026 La suite.",
+        videoId: "5lWcRK0curA",
+        description: "Rayan revient en ville avec une nouvelle vision 20/06/2026 La suite.",
       },
       {
         number: 2,
         title: "Nouvelle vie, nouvelles règles",
         videoId: "",
         description: "Une nouvelle aventure commence pour Rayan Moretti.",
+      },
+    ],
+  },
+];
+
+
+const isaacWolfSeasons: RayanSeason[] = [
+  {
+    season: 1,
+    title: "Isaac Wolf / Saison 1",
+    episodes: [
+      {
+        number: 1,
+        title: "L’arrivée d’Isaac Wolf",
+        videoId: "",
+        description:
+          "Isaac Wolf arrive dans l’Ouest avec un passé sombre, un nom à construire et l’instinct d’un loup solitaire.",
+      },
+      {
+        number: 2,
+        title: "Premier campement",
+        videoId: "",
+        description:
+          "Isaac trouve un refuge, prépare ses armes et commence à comprendre les règles du territoire.",
+      },
+      {
+        number: 3,
+        title: "La piste du loup",
+        videoId: "",
+        description:
+          "Une trace étrange mène Isaac vers la forêt, là où les loups semblent le reconnaître.",
+      },
+      {
+        number: 4,
+        title: "Les hors-la-loi de Valentine",
+        videoId: "",
+        description:
+          "Isaac croise des bandits et doit choisir entre éviter les ennuis ou défendre son honneur.",
+      },
+      {
+        number: 5,
+        title: "Une nuit sous la pleine lune",
+        videoId: "",
+        description:
+          "Autour du feu, Isaac entend les hurlements au loin et comprend que son destin est lié à la meute.",
+      },
+      {
+        number: 6,
+        title: "Le chasseur solitaire",
+        videoId: "",
+        description:
+          "Pour survivre, Isaac chasse, vend ses prises et commence à se faire un nom dans les villages.",
+      },
+      {
+        number: 7,
+        title: "Le camp attaqué",
+        videoId: "",
+        description:
+          "Son refuge est menacé. Isaac doit protéger ce qu’il a construit, même seul contre tous.",
+      },
+      {
+        number: 8,
+        title: "Le choix du loup",
+        videoId: "",
+        description:
+          "Entre vengeance et nouvelle vie, Isaac prend une décision qui change toute son histoire.",
+      },
+    ],
+  },
+  {
+    season: 2,
+    title: "Isaac Wolf / Saison 2",
+    episodes: [
+      {
+        number: 1,
+        title: "Le retour du loup",
+        videoId: "",
+        description:
+          "Après plusieurs semaines de silence, Isaac Wolf revient plus froid, plus dur et plus dangereux.",
+      },
+      {
+        number: 2,
+        title: "Un territoire à défendre",
+        videoId: "",
+        description:
+          "Isaac protège ses terres face aux chasseurs de primes et aux gangs qui veulent le faire tomber.",
+      },
+      {
+        number: 3,
+        title: "La meute se rassemble",
+        videoId: "",
+        description:
+          "De nouveaux alliés apparaissent, mais Isaac sait qu’une meute peut aussi cacher des traîtres.",
+      },
+      {
+        number: 4,
+        title: "Guerre entre clans",
+        videoId: "",
+        description:
+          "Les tensions explosent entre plusieurs groupes. Isaac doit choisir son camp et assumer les conséquences.",
+      },
+      {
+        number: 5,
+        title: "Le loup blessé",
+        videoId: "",
+        description:
+          "Trahi par une personne proche, Isaac disparaît dans la montagne pour préparer son retour.",
+      },
+      {
+        number: 6,
+        title: "Le grand hiver",
+        videoId: "",
+        description:
+          "Le froid, la faim et les ennemis poussent Isaac à ses limites. Seuls les plus forts survivent.",
+      },
+      {
+        number: 7,
+        title: "Dernier duel à Blackwater",
+        videoId: "",
+        description:
+          "Isaac affronte celui qui a voulu détruire son nom. Le duel peut devenir une légende.",
+      },
+      {
+        number: 8,
+        title: "La légende d’Isaac Wolf",
+        videoId: "",
+        description:
+          "Le nom d’Isaac Wolf commence à traverser tout l’Ouest. Certains le craignent, d’autres le respectent.",
       },
     ],
   },
@@ -614,6 +674,7 @@ const banners = [
   "/image/banner-marvel.png",
   "/image/banner-mafia.png",
   "/image/banner-police.png",
+  "/image/banner-isaac.png",
 ];
 const sponsors: SponsorItem[] = [
   {
@@ -1460,14 +1521,17 @@ export default function Page() {
   const [selectedSeasonEpisode, setSelectedSeasonEpisode] =
     useState<SeasonEpisode>(seasonOneEpisodes[0]);
 
-  const [selectedRomainSeason, setSelectedRomainSeason] = useState<number>(1);
-
-  const currentRomainSeason =
-    romainSeasons.find((season) => season.season === selectedRomainSeason) ??
-    romainSeasons[0];
-
   const [selectedSeasonTwoEpisode, setSelectedSeasonTwoEpisode] =
-    useState<SeasonEpisode>(romainSeasons[0].episodes[0]);
+    useState<SeasonEpisode>(seasonTwoEpisodes[0]);
+
+  const [selectedIsaacSeason, setSelectedIsaacSeason] = useState<number>(1);
+
+  const currentIsaacSeason =
+    isaacWolfSeasons.find((season) => season.season === selectedIsaacSeason) ??
+    isaacWolfSeasons[0];
+
+  const [selectedIsaacEpisode, setSelectedIsaacEpisode] =
+    useState<SeasonEpisode>(isaacWolfSeasons[0].episodes[0]);
 
   const [selectedMarvelSeason, setSelectedMarvelSeason] = useState<number>(1);
 
@@ -1497,12 +1561,6 @@ export default function Page() {
 
     return () => clearInterval(interval);
   }, []);
-
-  useEffect(() => {
-    if (currentRomainSeason.episodes.length > 0) {
-      setSelectedSeasonTwoEpisode(currentRomainSeason.episodes[0]);
-    }
-  }, [currentRomainSeason]);
 
   useEffect(() => {
     if (currentMarvelSeason.episodes.length > 0) {
@@ -1602,6 +1660,7 @@ export default function Page() {
           <a href="#top">Accueil</a>
           <a href="#rayan-moretti">Rayan Moretti</a>
           <a href="#serie-2">Romain Moretti 2</a>
+          <a href="#isaac-wolf">Isaac Wolf</a>
           <a href="#marvel">Marvel</a>
 
           <button
@@ -2039,7 +2098,7 @@ export default function Page() {
             <h3>STATUT</h3>
             <div className="iproLinksList">
               <span>🎬 Série disponible</span>
-              <span>📅 Saison 2 ajoutée</span>
+              <span>📅 Saison 1 en cours</span>
             </div>
           </aside>
         </div>
@@ -2050,21 +2109,7 @@ export default function Page() {
         id="romain-moretti-saison-1"
       >
         <div className="iproSeasonHeader">
-          <span className="iproSeasonBadge">{currentRomainSeason.title}</span>
-          <div className="iproSeasonSwitch">
-            {romainSeasons.map((season) => (
-              <button
-                key={season.season}
-                type="button"
-                onClick={() => setSelectedRomainSeason(season.season)}
-                className={`iproSeasonSwitchBtn ${
-                  selectedRomainSeason === season.season ? "active" : ""
-                }`}
-              >
-                Saison {season.season}
-              </button>
-            ))}
-          </div>
+          <span className="iproSeasonBadge">SAISON 1</span>
         </div>
 
         <div className="iproSeasonLayout">
@@ -2095,15 +2140,151 @@ export default function Page() {
           </div>
 
           <div className="iproEpisodesList">
-            {currentRomainSeason.episodes.map((episode) => (
+            {seasonTwoEpisodes.map((episode) => (
               <SeasonEpisodeCard
-                key={episode.videoId || `romain-season-${currentRomainSeason.season}-${episode.number}`}
+                key={episode.videoId || `season-two-${episode.number}`}
                 episode={episode}
-                isActive={
-                  selectedSeasonTwoEpisode.number === episode.number &&
-                  currentRomainSeason.episodes.includes(selectedSeasonTwoEpisode)
-                }
+                isActive={selectedSeasonTwoEpisode.number === episode.number}
                 onClick={() => setSelectedSeasonTwoEpisode(episode)}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="iproHeroSection section" id="isaac-wolf">
+        <div className="iproHeroBannerWrap">
+          <img
+            src="/image/banner-rayan.png"
+            alt="Isaac Wolf"
+            className="iproHeroBanner"
+          />
+          <div className="iproHeroBannerOverlay" />
+        </div>
+
+        <div className="iproHeroGrid">
+          <div className="iproHeroMain">
+            <span className="iproTag">RED DEAD RP</span>
+            <h2>Isaac Wolf</h2>
+            <p className="iproDescription">
+              Isaac Wolf est un homme de l’Ouest, froid, solitaire et guidé par
+              l’instinct du loup. Entre chasse, survie, vengeance et respect,
+              il avance dans un monde dangereux où chaque choix peut écrire sa
+              légende.
+            </p>
+
+            <div className="iproActions">
+              <button
+                className="iproStartBtn"
+                type="button"
+                onClick={() => scrollToSection("isaac-wolf-saison")}
+              >
+                ▶ COMMENCER
+              </button>
+
+              <a
+                className="iproPlusBtn"
+                href="https://www.youtube.com/@kenshin5996"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Voir sur YouTube"
+              >
+                +
+              </a>
+            </div>
+          </div>
+
+          <aside className="iproLinksCard">
+            <h3>ISAAC WOLF</h3>
+            <div className="iproLinksList">
+              {isaacWolfSeasons.map((season) => (
+                <button
+                  key={season.season}
+                  type="button"
+                  onClick={() => {
+                    setSelectedIsaacSeason(season.season);
+                    setSelectedIsaacEpisode(season.episodes[0]);
+                  }}
+                  className={`iproSeasonSwitchBtn ${
+                    selectedIsaacSeason === season.season ? "active" : ""
+                  }`}
+                >
+                  Saison {season.season}
+                </button>
+              ))}
+              <span>🐺 Personnage Red Dead RP</span>
+              <span>🎬 Vidéos à ajouter bientôt</span>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section className="section iproSeasonSection" id="isaac-wolf-saison">
+        <div className="iproSeasonHeader">
+          <span className="iproSeasonBadge">
+            SAISON {currentIsaacSeason.season}
+          </span>
+
+          <div
+            style={{
+              display: "flex",
+              gap: "12px",
+              marginTop: "14px",
+              flexWrap: "wrap",
+            }}
+          >
+            {isaacWolfSeasons.map((season) => (
+              <button
+                key={season.season}
+                type="button"
+                onClick={() => {
+                  setSelectedIsaacSeason(season.season);
+                  setSelectedIsaacEpisode(season.episodes[0]);
+                }}
+                className={`iproSeasonSwitchBtn ${
+                  selectedIsaacSeason === season.season ? "active" : ""
+                }`}
+              >
+                Saison {season.season}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="iproSeasonLayout">
+          <div className="iproSeasonPlayer">
+            <div className="iproPlayerFrame">
+              {selectedIsaacEpisode.videoId ? (
+                <iframe
+                  src={`https://www.youtube-nocookie.com/embed/${selectedIsaacEpisode.videoId}`}
+                  title={selectedIsaacEpisode.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              ) : (
+                <div className="emptyFavorites">
+                  <p>Vidéo bientôt disponible.</p>
+                  <span>Ajoute ton lien YouTube dans videoId quand l’épisode est prêt.</span>
+                </div>
+              )}
+            </div>
+
+            <div className="iproPlayerContent">
+              <span className="iproEpisodeLabel">
+                ÉPISODE {selectedIsaacEpisode.number}
+              </span>
+              <h3>{selectedIsaacEpisode.title}</h3>
+              <p>{selectedIsaacEpisode.description}</p>
+            </div>
+          </div>
+
+          <div className="iproEpisodesList">
+            {currentIsaacSeason.episodes.map((episode) => (
+              <SeasonEpisodeCard
+                key={`isaac-${currentIsaacSeason.season}-${episode.number}`}
+                episode={episode}
+                isActive={selectedIsaacEpisode.number === episode.number}
+                onClick={() => setSelectedIsaacEpisode(episode)}
               />
             ))}
           </div>

@@ -268,36 +268,30 @@ const seasonOneEpisodes: SeasonEpisode[] = [
     description:
       "Entre rivalités, décisions et ambitions, Rayan doit garder le contrôle.",
   },
+  
   {
     number: 5,
-    title: "La suite de l’ascension",
-    videoId: "inHxkaNHnSo",
-    description:
-      "Une nouvelle étape dans l’évolution de Rayan Moretti et de son univers RP.",
-  },
-  {
-    number: 6,
     title: "Moments marquants",
     videoId: "ej58fkyhnKo",
     description:
       "Un épisode important où plusieurs événements viennent redéfinir son parcours.",
   },
   {
-    number: 7,
+    number: 6,
     title: "Nouvelle aventure",
     videoId: "_olKUTD7n8o",
     description:
       "Rayan poursuit sa route dans un monde où la moindre erreur peut coûter cher.",
   },
   {
-    number: 8,
+    number: 7,
     title: "Retour des moments forts",
     videoId: "gr8K8barM5o",
     description:
       "Les confrontations se multiplient et l’univers RP devient encore plus intense.",
   },
   {
-    number: 9,
+    number: 8,
     title: "Action et évolution",
     videoId: "0ka_Zr6zN3Q",
     description:
@@ -358,6 +352,12 @@ const seasonTwoEpisodes: SeasonEpisode[] = [
     title: "Une journée dans une nouvelle ville 🐴",
     videoId: "LipeeeyPgAA",
     description: "On découvre la ville autrement, on explore les rues et les environs tout en essayant cette nouvelle expérience en RP🏙️✨.",
+  },
+{
+    number: 9,
+    title: "Soirée chill avec Romain Moretti… Bientôt, l'enquête de Rayan Moretti : le mystère de la grotte",
+    videoId: "f25PFSyArtY",
+    description: "Très bientôt : l'enquête de Rayan Moretti – Le Mystère de la Grotte. 🕵️‍♂️",
   },
 ];
 

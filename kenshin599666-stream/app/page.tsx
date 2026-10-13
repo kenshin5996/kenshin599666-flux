@@ -617,6 +617,29 @@ const marvelSeasons: MarvelSeason[] = [
       },
     ],
   },
+  {
+    season: 3,
+    title: "Wolverine / Saison 3",
+    episodes: [
+      {
+        number: 1,
+        title: "Wolverine — Épisode 1",
+        videoId: "gvqgk_N5b2U",
+        description: "Premier épisode de Wolverine.",
+      },
+      {
+        number: 2,
+        title: "Wolverine — Épisode 2",
+        videoId: "CVqvsCpOVWY",
+        description: "Deuxième épisode de Wolverine.",
+      },
+    ],
+  },
+  {
+    season: 4,
+    title: "Wolverine / Saison 4",
+    episodes: [],
+  },
 ];
 
 const banners = [
@@ -1214,6 +1237,32 @@ function getSponsorMessage(status: SponsorStatus) {
   }
 }
 
+function TwoLifeVideoFrame({ videoId, title }: { videoId: string; title: string }) {
+  const [showAd, setShowAd] = useState(true);
+
+  return (
+    <div style={{ position: "relative", width: "100%", height: "100%", minHeight: "220px" }}>
+      {showAd ? (
+        <div style={{ position: "absolute", inset: 0, zIndex: 2, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "14px", padding: "24px", textAlign: "center", color: "white", background: "linear-gradient(135deg, #0a0a12, #231437)" }}>
+          <span style={{ fontSize: "12px", letterSpacing: "2px", fontWeight: 800, color: "#c4b5fd" }}>PARTENAIRE</span>
+          <h3 style={{ margin: 0, fontSize: "clamp(24px, 4vw, 36px)" }}>TWO LIFE</h3>
+          <p style={{ maxWidth: "420px", margin: 0, lineHeight: 1.6 }}>Je vous présente mon partenaire. Découvrez TWO LIFE avant de regarder cette vidéo !</p>
+          <a href="https://twolife.fr/" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", padding: "11px 18px", borderRadius: "9px", background: "#8b5cf6", color: "white", fontWeight: 700, textDecoration: "none" }}>Découvrir TWO LIFE</a>
+          <button type="button" onClick={() => setShowAd(false)} style={{ padding: "9px 16px", borderRadius: "9px", border: "1px solid rgba(255,255,255,.55)", background: "transparent", color: "white", cursor: "pointer", fontWeight: 700 }}>Passer la publicité ▶</button>
+        </div>
+      ) : (
+        <iframe
+          src={`https://www.youtube-nocookie.com/embed/${videoId}`}
+          title={title}
+          style={{ width: "100%", height: "100%", minHeight: "220px", border: 0 }}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        />
+      )}
+    </div>
+  );
+}
+
 function VideoCard({
   episode,
   favoris,
@@ -1224,16 +1273,57 @@ function VideoCard({
   toggleFavori: (videoId: string) => void;
 }) {
   const isFavorite = favoris.includes(episode.videoId);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   return (
     <article className="netflixCard">
       <div className="netflixEmbed">
-        <iframe
-          src={`https://www.youtube-nocookie.com/embed/${episode.videoId}`}
-          title={episode.title}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-        />
+        {isPlaying ? (
+          <TwoLifeVideoFrame videoId={episode.videoId} title={episode.title} />
+        ) : (
+          <button
+            type="button"
+            onClick={() => setIsPlaying(true)}
+            aria-label={`Regarder ${episode.title}`}
+            style={{
+              position: "relative",
+              display: "block",
+              width: "100%",
+              height: "100%",
+              minHeight: "220px",
+              padding: 0,
+              border: 0,
+              overflow: "hidden",
+              cursor: "pointer",
+              background: "#100b17",
+            }}
+          >
+            <img
+              src={`https://img.youtube.com/vi/${episode.videoId}/hqdefault.jpg`}
+              alt={`Miniature de ${episode.title}`}
+              loading="lazy"
+              style={{ display: "block", width: "100%", height: "100%", minHeight: "220px", objectFit: "cover" }}
+            />
+            <span
+              aria-hidden="true"
+              style={{
+                position: "absolute",
+                left: "50%",
+                top: "50%",
+                transform: "translate(-50%, -50%)",
+                display: "grid",
+                placeItems: "center",
+                width: "64px",
+                height: "46px",
+                borderRadius: "13px",
+                background: "#e11d48",
+                color: "white",
+                fontSize: "25px",
+                boxShadow: "0 4px 22px rgba(0,0,0,.45)",
+              }}
+            >▶</span>
+          </button>
+        )}
       </div>
 
       <div className="netflixContent">
@@ -1491,6 +1581,7 @@ export default function Page() {
 
   const [selectedMarvelEpisode, setSelectedMarvelEpisode] =
     useState<SeasonEpisode>(marvelSeasons[0].episodes[0]);
+  const [showTwoLifeAd, setShowTwoLifeAd] = useState(true);
 
   useEffect(() => {
     const savedFavoris = localStorage.getItem("favorisVideos");
@@ -1972,12 +2063,7 @@ export default function Page() {
         <div className="iproSeasonLayout">
           <div className="iproSeasonPlayer">
             <div className="iproPlayerFrame">
-              <iframe
-                src={`https://www.youtube-nocookie.com/embed/${selectedSeasonEpisode.videoId}`}
-                title={selectedSeasonEpisode.title}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              />
+              <TwoLifeVideoFrame key={selectedSeasonEpisode.videoId} videoId={selectedSeasonEpisode.videoId} title={selectedSeasonEpisode.title} />
             </div>
 
             <div className="iproPlayerContent">
@@ -2066,12 +2152,7 @@ export default function Page() {
           <div className="iproSeasonPlayer">
             <div className="iproPlayerFrame">
               {selectedSeasonTwoEpisode.videoId ? (
-                <iframe
-                  src={`https://www.youtube-nocookie.com/embed/${selectedSeasonTwoEpisode.videoId}`}
-                  title={selectedSeasonTwoEpisode.title}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                />
+                <TwoLifeVideoFrame key={selectedSeasonTwoEpisode.videoId} videoId={selectedSeasonTwoEpisode.videoId} title={selectedSeasonTwoEpisode.title} />
               ) : (
                 <div className="emptyFavorites">
                   <p>Aucune vidéo pour le moment.</p>
@@ -2205,12 +2286,7 @@ export default function Page() {
           <div className="iproSeasonPlayer">
             <div className="iproPlayerFrame">
               {selectedIsaacEpisode.videoId ? (
-                <iframe
-                  src={`https://www.youtube-nocookie.com/embed/${selectedIsaacEpisode.videoId}`}
-                  title={selectedIsaacEpisode.title}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                />
+                <TwoLifeVideoFrame key={selectedIsaacEpisode.videoId} videoId={selectedIsaacEpisode.videoId} title={selectedIsaacEpisode.title} />
               ) : (
                 <div className="emptyFavorites">
                   <p>Vidéo bientôt disponible.</p>
@@ -2290,7 +2366,13 @@ export default function Page() {
                 <button
                   key={season.season}
                   type="button"
-                  onClick={() => setSelectedMarvelSeason(season.season)}
+                  onClick={() => {
+                    setSelectedMarvelSeason(season.season);
+                    setShowTwoLifeAd(true);
+                    if (season.episodes.length > 0) {
+                      setSelectedMarvelEpisode(season.episodes[0]);
+                    }
+                  }}
                   className={`iproSeasonSwitchBtn ${
                     selectedMarvelSeason === season.season ? "active" : ""
                   }`}
@@ -2338,14 +2420,9 @@ export default function Page() {
 
         <div className="iproSeasonLayout">
           <div className="iproSeasonPlayer">
-            <div className="iproPlayerFrame">
-              {selectedMarvelEpisode.videoId ? (
-                <iframe
-                  src={`https://www.youtube-nocookie.com/embed/${selectedMarvelEpisode.videoId}`}
-                  title={selectedMarvelEpisode.title}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                />
+            <div className="iproPlayerFrame" style={{ position: "relative" }}>
+              {currentMarvelSeason.episodes.length > 0 && selectedMarvelEpisode.videoId ? (
+                <TwoLifeVideoFrame key={selectedMarvelEpisode.videoId} videoId={selectedMarvelEpisode.videoId} title={selectedMarvelEpisode.title} />
               ) : (
                 <div className="emptyFavorites">
                   <p>Aucune vidéo pour le moment.</p>
@@ -2354,13 +2431,20 @@ export default function Page() {
               )}
             </div>
 
-            <div className="iproPlayerContent">
-              <span className="iproEpisodeLabel">
-                ÉPISODE {selectedMarvelEpisode.number}
-              </span>
-              <h3>{selectedMarvelEpisode.title}</h3>
-              <p>{selectedMarvelEpisode.description}</p>
-            </div>
+            {currentMarvelSeason.episodes.length > 0 ? (
+              <div className="iproPlayerContent">
+                <span className="iproEpisodeLabel">
+                  ÉPISODE {selectedMarvelEpisode.number}
+                </span>
+                <h3>{selectedMarvelEpisode.title}</h3>
+                <p>{selectedMarvelEpisode.description}</p>
+              </div>
+            ) : (
+              <div className="iproPlayerContent">
+                <h3>{currentMarvelSeason.title}</h3>
+                <p>Les épisodes de Wolverine seront ajoutés ici bientôt.</p>
+              </div>
+            )}
           </div>
 
           <div className="iproEpisodesList">
@@ -2372,7 +2456,7 @@ export default function Page() {
                   selectedMarvelEpisode.number === episode.number &&
                   selectedMarvelEpisode.videoId === episode.videoId
                 }
-                onClick={() => setSelectedMarvelEpisode(episode)}
+                onClick={() => { setSelectedMarvelEpisode(episode); setShowTwoLifeAd(true); }}
               />
             ))}
           </div>
@@ -2400,12 +2484,7 @@ export default function Page() {
 
         <div className="featuredCard">
           <div className="featuredVideo">
-            <iframe
-              src={`https://www.youtube-nocookie.com/embed/${featured.videoId}`}
-              title={featured.title}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            />
+            <TwoLifeVideoFrame videoId={featured.videoId} title={featured.title} />
           </div>
 
           <div className="featuredInfo">

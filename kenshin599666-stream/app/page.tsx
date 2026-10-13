@@ -629,16 +629,15 @@ const banners = [
 ];
 const sponsors: SponsorItem[] = [
   {
-    id: "freecash-1",
-    name: "Freecash",
+    id: "twolife-1",
+    name: "TWO LIFE",
     description:
-      "Supporte la chaîne en découvrant Freecash. Tu peux gagner de l’argent en jouant, en testant des applications et en complétant différentes offres.",
-    sponsorUrl: "https://strms.net/freecash_kenshin5996",
+      "Découvre TWO LIFE sur https://twolife.fr/ et soutiens le projet en visitant le site officiel.",
+    sponsorUrl: "https://twolife.fr/",
     tipUrl: "https://streamelements.com/kenshin5996/tip",
     startDate: "2026-04-19T00:00:00",
-    endDate: "2026-04-30T23:59:59",
-    image: "/image/freecash-banner.png",
-  },
+    endDate: "2027-12-30T23:59:59",
+      },
 ];
 
 const rayanBookChapters: BookChapter[] = [
@@ -1367,7 +1366,7 @@ function SponsorCard({ sponsor }: { sponsor: SponsorItem }) {
               target="_blank"
               rel="noreferrer sponsored"
             >
-              Accéder à Freecash
+              Accéder à TWO LIFE
             </a>
           )}
 
@@ -1401,7 +1400,7 @@ function SponsorCard({ sponsor }: { sponsor: SponsorItem }) {
               background: "rgba(255,255,255,0.06)",
             }}
           >
-            ✅ Merci à tous, le sponsor Freecash est terminé.
+            ✅ Merci à tous, le sponsor TWO LIFE est terminé.
           </div>
         )}
 
@@ -1414,7 +1413,7 @@ function SponsorCard({ sponsor }: { sponsor: SponsorItem }) {
               background: "rgba(0,255,120,0.12)",
             }}
           >
-            🔥 Le sponsor Freecash est actuellement actif.
+            🔥 Le sponsor TWO LIFE est actuellement actif.
           </div>
         )}
 
@@ -1453,9 +1452,9 @@ function SponsorCard({ sponsor }: { sponsor: SponsorItem }) {
 export default function Page() {
   const featured = episodes[0];
 
-  const freecashSponsor = sponsors.find((sponsor) => sponsor.id === "freecash-1");
-  const freecashStatus = freecashSponsor
-    ? getSponsorStatus(freecashSponsor.startDate, freecashSponsor.endDate)
+  const twoLifeSponsor = sponsors.find((sponsor) => sponsor.id === "twolife-1");
+  const twoLifeStatus = twoLifeSponsor
+    ? getSponsorStatus(twoLifeSponsor.startDate, twoLifeSponsor.endDate)
     : "finished";
 
   const [currentBanner, setCurrentBanner] = useState(0);
@@ -1637,7 +1636,7 @@ export default function Page() {
 
           <a href="#favoris">Favoris</a>
           <a href="#categories">Catégories</a>
-          <a href="#sponsor-freecash">Sponsor</a>
+          <a href="#sponsor-twolife">Sponsor</a>
           <a href="#plateformes">Plateformes</a>
         </nav>
 
@@ -1687,14 +1686,14 @@ export default function Page() {
               Mes favoris
             </a>
 
-            {freecashStatus === "active" && freecashSponsor && (
+            {twoLifeStatus === "active" && twoLifeSponsor && (
               <a
                 className="secondaryBtn"
-                href={freecashSponsor.sponsorUrl}
+                href={twoLifeSponsor.sponsorUrl}
                 target="_blank"
                 rel="noreferrer sponsored"
               >
-                💰 Freecash actif
+                💰 TWO LIFE actif
               </a>
             )}
           </div>
@@ -1790,13 +1789,13 @@ export default function Page() {
                 📖 Ouvrir le livre RP
               </button>
 
-              {freecashStatus === "active" && freecashSponsor && (
+              {twoLifeStatus === "active" && twoLifeSponsor && (
                 <a
-                  href={freecashSponsor.sponsorUrl}
+                  href={twoLifeSponsor.sponsorUrl}
                   target="_blank"
                   rel="noreferrer sponsored"
                 >
-                  💰 Sponsor Freecash
+                  💰 Sponsor TWO LIFE
                 </a>
               )}
 
@@ -2380,7 +2379,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="section" id="sponsor-freecash">
+      <section className="section" id="sponsor-twolife">
         <div className="rowHeader">
           <h2>Sponsors</h2>
           <div className="sectionLine" />
@@ -2548,20 +2547,20 @@ export default function Page() {
             </a>
           </article>
 
-          {freecashStatus === "active" && freecashSponsor && (
+          {twoLifeStatus === "active" && twoLifeSponsor && (
             <article className="platformCard">
-              <h3>💰 Sponsor Freecash</h3>
+              <h3>💰 Sponsor TWO LIFE</h3>
               <p>
                 Gagne de l’argent en jouant, testant des apps et en complétant des
                 offres. Passe par mon lien pour soutenir le projet.
               </p>
               <a
                 className="primaryBtn"
-                href={freecashSponsor.sponsorUrl}
+                href={twoLifeSponsor.sponsorUrl}
                 target="_blank"
                 rel="noreferrer sponsored"
               >
-                Essayer Freecash
+                Visiter TWO LIFE
               </a>
             </article>
           )}

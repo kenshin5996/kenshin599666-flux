@@ -637,18 +637,18 @@ const marvelSeasons: MarvelSeason[] = [
         number: 3,
         title: "Wolverine — Épisode 3",
         videoId: "VW0H2NpKpMw",
-        description: "Vidéo bientôt disponible.",
+        description: "3éme épisode de Wolverine .",
       },
     {
         number: 4,
         title: "bientot dispo 4",
-        videoId: "VW0H2NpKpMw",
+        videoId: "",
         description: "Vidéo bientôt disponible.",
       },
    {
         number: 5,
         title: "bientot dispo 5",
-        videoId: "VW0H2NpKpMw",
+        videoId: "",
         description: "Vidéo bientôt disponible.",
       },
 ]

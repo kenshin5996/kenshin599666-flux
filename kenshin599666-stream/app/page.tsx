@@ -633,8 +633,27 @@ const marvelSeasons: MarvelSeason[] = [
         videoId: "CVqvsCpOVWY",
         description: "Deuxième épisode de Wolverine.",
       },
-    ],
+      {
+        number: 3,
+        title: "Wolverine — Épisode 3",
+        videoId: "VW0H2NpKpMw",
+        description: "Vidéo bientôt disponible.",
+      },
+    {
+        number: 4,
+        title: "bientot dispo 4",
+        videoId: "VW0H2NpKpMw",
+        description: "Vidéo bientôt disponible.",
+      },
+   {
+        number: 5,
+        title: "bientot dispo 5",
+        videoId: "VW0H2NpKpMw",
+        description: "Vidéo bientôt disponible.",
+      },
+]
   },
+
   {
     season: 4,
     title: "Wolverine / Saison 4",

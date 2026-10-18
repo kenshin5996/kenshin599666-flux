@@ -641,15 +641,15 @@ const marvelSeasons: MarvelSeason[] = [
       },
     {
         number: 4,
-        title: "bientot dispo 4",
-        videoId: "",
-        description: "Vidéo bientôt disponible.",
+        title: "LA SUITE DE L’INVITURE WOLVERINE 🐺⚡🛴  4",
+        videoId: "Y_icVdqHSws",
+        description: "Accrochez-vous, Wolverine n’a pas dit son dernier mot ! 🐺⚡🛴.",
       },
    {
         number: 5,
-        title: "bientot dispo 5",
-        videoId: "",
-        description: "Vidéo bientôt disponible.",
+        title: "🐺🔥 Wolverine est de retour pour une nouvelle aventure explosive ! 💥",
+        videoId: "ec8Frle_djQ",
+        description: "5éme épisode.",
       },
 ]
   },

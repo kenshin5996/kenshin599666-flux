@@ -651,6 +651,12 @@ const marvelSeasons: MarvelSeason[] = [
         videoId: "ec8Frle_djQ",
         description: "5éme épisode.",
       },
+{
+        number: 6,
+        title: "🐺 Épisode 6 : Wolverine sauve un loup… Une rencontre incroyable !",
+        videoId: "pxbVXqKpvNs",
+        description: "6éme épisode.",
+      },
 ]
   },
 

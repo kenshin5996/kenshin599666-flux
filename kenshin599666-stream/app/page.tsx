@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState, type FormEvent } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 type EpisodeCategory = "RP" | "Action" | "Drama" | "RPMarrant" | "Marvel";
 type SponsorStatus = "active" | "finished" | "upcoming";
@@ -1566,159 +1566,82 @@ function SponsorCard({ sponsor }: { sponsor: SponsorItem }) {
 
 
 function KenshinAssistant() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [question, setQuestion] = useState("");
-  const [messages, setMessages] = useState<Array<{ role: "bot" | "user"; text: string }>>([
-    {
-      role: "bot",
-      text: "Salut et bienvenue ! 👋 Je suis l’assistant du site Kenshin5996. Je peux t’expliquer le site, résumer les histoires de Rayan et Romain Moretti, et t’aider à trouver les vidéos GTA RP et Marvel, les chaînes YouTube, les lives Twitch, les extraits TikTok et Team RDM. Tu peux aussi choisir « Contacter Kenshin5996 » pour envoyer un message à l’équipe. Que recherches-tu aujourd’hui ?",
-    },
-  ]);
+  const [isOpen, setIsOpen] = useState(true);
+  const [isSpeaking, setIsSpeaking] = useState(false);
 
-  function answerQuestion(rawQuestion: string) {
-    const q = rawQuestion.toLowerCase().trim().replace(/[’']/g, "'");
-    const links = {
-      archive: "https://www.youtube.com/@kenshin5996",
-      prime: "https://www.youtube.com/@kenshin59963",
-      twitch: "https://www.twitch.tv/kenshin5996",
-      tiktok: "https://www.tiktok.com/@rdm.kenshin5996",
-      team: "https://kenshin5996.github.io/team-rdm.github.io/",
-      discord: "https://discord.gg/gaEPXCZHjG",
-      contact: "kenshin5996pro@gmail.com",
+  const presentation = "Bienvenue sur le site Kenshin5996. Ici, tu peux découvrir plusieurs univers vidéo. Dans la partie Role Play, suis les aventures de Rayan Moretti et de Romain Moretti, leurs histoires, leurs missions et leurs mystères. Tu trouveras aussi des vidéos RP marrantes pour les moments plus légers. Dans la rubrique Marvel, découvre les aventures de Spider-Man réparties sur deux saisons, ainsi que Wolverine, avec six épisodes disponibles dans la saison trois. Parcours les saisons et sélectionne une vidéo pour la regarder. Tu peux également retrouver les chaînes YouTube, les lives Twitch, les extraits TikTok et les informations sur Team RDM. Bonne visite sur Kenshin5996 !";
+
+  function speakPresentation() {
+    if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(presentation);
+    utterance.lang = "fr-FR";
+    utterance.rate = 0.95;
+    utterance.onstart = () => setIsSpeaking(true);
+    utterance.onend = () => setIsSpeaking(false);
+    utterance.onerror = () => setIsSpeaking(false);
+    window.speechSynthesis.speak(utterance);
+  }
+
+  function stopPresentation() {
+    if (typeof window !== "undefined" && "speechSynthesis" in window) window.speechSynthesis.cancel();
+    setIsSpeaking(false);
+  }
+
+  useEffect(() => {
+    // Le guide s'affiche automatiquement. La voix démarre après un clic,
+    // car les navigateurs bloquent souvent la lecture audio automatique.
+    setIsOpen(true);
+    return () => {
+      if (typeof window !== "undefined" && "speechSynthesis" in window) window.speechSynthesis.cancel();
     };
-    if (/^(salut|salut !|bonjour|bonsoir|hello|hey|cc|coucou|yo|wesh)(\b|[ !?.])/.test(q)) {
-      return "Salut à toi ! 👋 Bienvenue sur le site de Kenshin5996. Tu cherches une vidéo, un contenu GTA RP ou Marvel, les lives, ou les réseaux ? Dis-moi ce qui t’intéresse et je t’oriente. 🎮";
-    }
-    if (q.includes("merci") || q.includes("thx") || q.includes("thanks")) {
-      return "Avec plaisir ! 😊 Si tu veux continuer, je peux aussi t’indiquer les chaînes YouTube, Twitch, TikTok ou la page Team RDM.";
-    }
-    if (q.includes("contacter") || q.includes("contact") || q.includes("agent") || q.includes("humain") || q.includes("parler à kenshin") || q.includes("parler a kenshin") || q.includes("support") || q.includes("problème") || q.includes("probleme")) {
-      return `Tu veux parler directement à Kenshin5996 ? 📩 Clique sur le lien e-mail ci-dessous pour préparer ton message :\nmailto:${links.contact}?subject=${encodeURIComponent("Demande depuis le site Kenshin5996")}\nExplique ton besoin dans le message, puis envoie-le. Tu peux aussi écrire à ${links.contact}.`;
-    }
-    if (q.includes("c'est quoi ce site") || q.includes("c est quoi ce site") || q.includes("quel est ce site") || q.includes("présente le site") || q.includes("presente le site") || q.includes("à quoi sert ce site") || q.includes("a quoi sert ce site")) {
-      return `Bienvenue sur le site de Kenshin5996 ! 🎮 Tu peux y découvrir mes vidéos et mes univers, notamment le GTA RP, les histoires de Rayan et Romain Moretti, Marvel et d’autres contenus. Tu peux aussi retrouver mes chaînes YouTube, mes lives Twitch, mes extraits TikTok et le projet Team RDM. Pour les vidéos, visite Kenshin5996 Prime : ${links.prime}`;
-    }
-    if (q.includes("rayan") || q.includes("rayane")) {
-      return `📖 **Rayan Moretti — petit résumé**\nRayan est parti chasser avec Willy lorsqu’ils ont découvert une mystérieuse grotte. Cette découverte marque le début d’une aventure inquiétante autour d’un lieu qui semble dangereux.\n\nTu veux connaître la suite ? Découvre les vidéos de Kenshin5996 Prime : ${links.prime}`;
-    }
-    if (q.includes("romain") || q.includes("maison abandonnée") || q.includes("maison abandonnee")) {
-      return `📂 **Romain Moretti — petit résumé**\nRomain découvre la maison abandonnée de Rayan Moretti. Il y trouve des lettres, des factures à payer et des images de la grotte découverte par Rayan. Ces images contiennent un avertissement : il ne faut pas aller dans cette grotte, car elle est dangereuse.\n\nQue cachent ces documents ? Découvre l’histoire dans les vidéos de Kenshin5996 Prime : ${links.prime}`;
-    }
-    if (q.includes("grotte") || q.includes("caverne")) {
-      return `🕯️ **La mystérieuse grotte**\nRayan Moretti et Willy l’ont découverte alors qu’ils étaient partis chasser. Plus tard, Romain trouve dans la maison abandonnée de Rayan des images de cette grotte accompagnées d’un avertissement indiquant qu’elle est dangereuse. Pour découvrir l’histoire en vidéo : ${links.prime}`;
-    }
-    if (q.includes("team rdm") || q.includes("rdm") || q.includes("soutenir") || q.includes("équipe") || q.includes("equipe")) {
-      return `Tu veux découvrir ou soutenir Team RDM ? 🤝 Retrouve la page dédiée ici : ${links.team} Tu pourras y découvrir le projet et ses membres.`;
-    }
-    if (q.includes("archive") || q.includes("ancienne chaîne") || q.includes("ancienne chaine")) {
-      return `Pour la chaîne archive de Kenshin5996, c’est par ici : ${links.archive}`;
-    }
-    if (q.includes("prime") || q.includes("chaîne principale") || q.includes("chaine principale") || q.includes("vidéos") || q.includes("videos") || q.includes("youtube")) {
-      return `Voici les chaînes YouTube de Kenshin5996 :
-• Chaîne archive : ${links.archive}
-• Kenshin5996 Prime — vidéos : ${links.prime}
-Tu peux ouvrir le lien qui correspond à ce que tu cherches.`;
-    }
-    if (q.includes("tiktok") || q.includes("extrait") || q.includes("extraits")) {
-      return `Pour retrouver les extraits et clips, visite le TikTok de Kenshin5996 : ${links.tiktok}`;
-    }
-    if (q.includes("twitch") || q.includes("live") || q.includes("stream") || q.includes("direct")) {
-      return `Pour regarder les lives de Kenshin5996, rendez-vous sur Twitch : ${links.twitch} 🎥
-Petite précision : cet assistant aide les visiteurs sur le site. Pour répondre automatiquement dans le chat Twitch, un bot Twitch séparé doit être configuré.`;
-    }
-    if (q.includes("marvel") || q.includes("spider") || q.includes("wolverine") || q.includes("super-héros") || q.includes("super héros")) {
-      return "🦸 Pour les contenus Marvel, Spider-Man et les autres super-héros, explore les rubriques vidéo du site. Tu peux aussi consulter Kenshin5996 Prime pour retrouver les vidéos : https://www.youtube.com/@kenshin59963";
-    }
-    if (q.includes("gta") || q.includes("roleplay") || q.includes("role play") || q.includes("rp") || q.includes("rayan") || q.includes("romain")) {
-      return "🚘 Pour les aventures GTA RP et les histoires de Rayan ou Romain Moretti, consulte les sections Univers RP et saisons RP du site. Pour retrouver les vidéos, voici la chaîne Kenshin5996 Prime : https://www.youtube.com/@kenshin59963";
-    }
-    if (q.includes("discord") || q.includes("communauté") || q.includes("communaute")) {
-      return `Pour rejoindre la communauté, voici le lien Discord : ${links.discord}`;
-    }
-    if (q.includes("réseau") || q.includes("reseau") || q.includes("lien") || q.includes("social")) {
-      return `Retrouve Kenshin5996 sur ses réseaux :
-• YouTube — archive : ${links.archive}
-• YouTube — Kenshin5996 Prime : ${links.prime}
-• Twitch — lives : ${links.twitch}
-• TikTok — extraits : ${links.tiktok}
-• Team RDM : ${links.team}`;
-    }
-    if (q.includes("qui es-tu") || q.includes("qui es tu") || q.includes("ton rôle") || q.includes("ton role") || q.includes("aide")) {
-      return "Je suis l’assistant du site Kenshin5996. 🤖 Je peux t’aider à trouver les contenus GTA RP et Marvel, les chaînes YouTube, les lives Twitch, les extraits TikTok, Discord et Team RDM. Pose ta question avec quelques mots-clés, par exemple « TikTok » ou « chaîne archive ».";
-    }
-    return "Je n’ai pas encore assez d’informations pour répondre précisément à cette question. 🤔 Tu peux me demander où trouver une vidéo, une chaîne, un live ou Team RDM. Pour une question personnelle ou une demande qui nécessite Kenshin5996, écris « contacter un agent ». Je préfère te le dire plutôt que d’inventer une réponse.";
-  }
-
-  function sendMessage(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const text = question.trim();
-    if (!text) return;
-    setMessages((current) => [
-      ...current,
-      { role: "user", text },
-      { role: "bot", text: answerQuestion(text) },
-    ]);
-    setQuestion("");
-  }
+  }, []);
 
   return (
     <div style={{ position: "fixed", right: 18, bottom: 18, zIndex: 9999, fontFamily: "inherit" }}>
       {isOpen && (
-        <section
-          aria-label="Assistant Kenshin5996"
-          style={{
-            width: "min(360px, calc(100vw - 36px))",
-            height: 430,
-            maxHeight: "calc(100vh - 100px)",
-            display: "flex",
-            flexDirection: "column",
-            overflow: "hidden",
-            border: "1px solid rgba(150,120,255,.55)",
-            borderRadius: 16,
-            background: "#11111b",
-            color: "#fff",
-            boxShadow: "0 12px 40px rgba(0,0,0,.45)",
-            marginBottom: 12,
-          }}
-        >
-          <header style={{ padding: "14px 16px", background: "linear-gradient(120deg,#5426a8,#173a75)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <section aria-label="Guide du site Kenshin5996" style={{ width: "min(390px, calc(100vw - 36px))", maxHeight: "min(78vh, 650px)", display: "flex", flexDirection: "column", overflow: "hidden", border: "1px solid rgba(255,174,51,.55)", borderRadius: 18, background: "#11110f", color: "#fff", boxShadow: "0 12px 40px rgba(0,0,0,.5)", marginBottom: 12 }}>
+          <header style={{ padding: "15px 16px", background: "linear-gradient(120deg,#8a3e0b,#5426a8)", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12 }}>
             <div>
-              <strong>🤖 Assistant Kenshin5996</strong>
-              <div style={{ fontSize: 12, opacity: 0.85 }}>Guidage vidéos, lives & communauté</div>
+              <strong>🎬 Guide du site Kenshin5996</strong>
+              <div style={{ fontSize: 12, opacity: 0.88, marginTop: 4 }}>Présentation automatique • sans chat</div>
             </div>
-            <button type="button" onClick={() => setIsOpen(false)} aria-label="Fermer l’assistant" style={{ background: "transparent", color: "#fff", border: 0, fontSize: 22, cursor: "pointer" }}>×</button>
+            <button type="button" onClick={() => { stopPresentation(); setIsOpen(false); }} aria-label="Fermer le guide" style={{ background: "transparent", color: "#fff", border: 0, fontSize: 22, cursor: "pointer" }}>×</button>
           </header>
-          <div aria-live="polite" style={{ padding: 12, overflowY: "auto", flex: 1, display: "flex", flexDirection: "column", gap: 10 }}>
-            {messages.map((message, index) => (
-              <div key={index} style={{ alignSelf: message.role === "user" ? "flex-end" : "flex-start", maxWidth: "90%", background: message.role === "user" ? "#5735a5" : "#262638", padding: "9px 11px", borderRadius: 12, fontSize: 14, lineHeight: 1.45, whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}>
-                {message.text.split(/(https?:\/\/[^\s]+|mailto:[^\s]+)/g).map((part, partIndex) =>
-                  /^https?:\/\//.test(part) ? <a key={partIndex} href={part.replace(/[),.!?]+$/, "")} target="_blank" rel="noreferrer" style={{ color: "#b9a4ff", textDecoration: "underline" }}>{part.replace(/[),.!?]+$/, "")}</a> : /^mailto:/.test(part) ? <a key={partIndex} href={part} style={{ color: "#b9a4ff", textDecoration: "underline" }}>Envoyer un e-mail à Kenshin5996</a> : <span key={partIndex}>{part}</span>
-                )}
-              </div>
-            ))}
+          <div style={{ padding: 16, overflowY: "auto", lineHeight: 1.55, fontSize: 14 }}>
+            <p style={{ marginTop: 0 }}>Bienvenue ! Ce guide te présente les contenus du site. Tu n’as rien à écrire et aucun micro n’est nécessaire.</p>
+            <div style={{ display: "grid", gap: 10 }}>
+              <article style={{ padding: 12, borderRadius: 12, background: "#21170f", border: "1px solid #513019" }}>
+                <strong style={{ color: "#ffb347" }}>🚘 Univers Role Play</strong>
+                <p style={{ margin: "6px 0 0" }}>Retrouve les aventures de Rayan Moretti et Romain Moretti, leurs histoires, leurs missions et le mystère de la grotte.</p>
+              </article>
+              <article style={{ padding: 12, borderRadius: 12, background: "#21170f", border: "1px solid #513019" }}>
+                <strong style={{ color: "#ffb347" }}>😂 RP marrant</strong>
+                <p style={{ margin: "6px 0 0" }}>Une sélection de six vidéos RP pour retrouver les moments drôles.</p>
+              </article>
+              <article style={{ padding: 12, borderRadius: 12, background: "#21170f", border: "1px solid #513019" }}>
+                <strong style={{ color: "#ffb347" }}>🕷️ Marvel — Spider-Man</strong>
+                <p style={{ margin: "6px 0 0" }}>Deux saisons sont répertoriées : la saison 1 contient 13 épisodes et la saison 2 contient 15 épisodes de Marvel’s Spider-Man 2.</p>
+              </article>
+              <article style={{ padding: 12, borderRadius: 12, background: "#21170f", border: "1px solid #513019" }}>
+                <strong style={{ color: "#ffb347" }}>🐺 Marvel — Wolverine</strong>
+                <p style={{ margin: "6px 0 0" }}>Six épisodes sont disponibles dans Wolverine / Saison 3. La saison 4 est présente dans le catalogue mais ne contient pas encore d’épisodes.</p>
+              </article>
+              <article style={{ padding: 12, borderRadius: 12, background: "#21170f", border: "1px solid #513019" }}>
+                <strong style={{ color: "#ffb347" }}>🌐 Réseaux et communauté</strong>
+                <p style={{ margin: "6px 0 0" }}>Le site permet aussi de retrouver les chaînes YouTube, les lives Twitch, les extraits TikTok et le projet Team RDM.</p>
+              </article>
+            </div>
+            <p style={{ marginBottom: 0, color: "#d6c8b8" }}>Choisis une rubrique sur le site pour parcourir les vidéos et lancer celle que tu veux regarder.</p>
           </div>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 6, padding: "0 10px 10px" }}>
-            {[
-              { label: "📖 Rayan Moretti", value: "Raconte-moi l’histoire de Rayan Moretti" },
-              { label: "📂 Romain Moretti", value: "Raconte-moi l’histoire de Romain Moretti" },
-              { label: "📺 YouTube", value: "Donne-moi les chaînes YouTube" },
-              { label: "📩 Contacter un agent", value: "Je veux contacter un agent" },
-            ].map((item) => (
-              <button key={item.label} type="button" onClick={() => {
-                setMessages((current) => [...current, { role: "user", text: item.value }, { role: "bot", text: answerQuestion(item.value) }]);
-              }} style={{ border: "1px solid #4b4b60", borderRadius: 999, padding: "6px 9px", background: "#1b1b29", color: "#e8e2ff", cursor: "pointer", fontSize: 12 }}>
-                {item.label}
-              </button>
-            ))}
+          <div style={{ display: "flex", gap: 8, padding: 12, borderTop: "1px solid #3b2b1e" }}>
+            <button type="button" onClick={speakPresentation} style={{ flex: 1, borderRadius: 10, padding: "11px 10px", background: "linear-gradient(120deg,#ffb347,#ff7926)", color: "#1b1007", fontWeight: 800, cursor: "pointer" }}>🔊 {isSpeaking ? "Relancer la présentation" : "Écouter la présentation"}</button>
+            <button type="button" onClick={stopPresentation} style={{ border: "1px solid #57483a", borderRadius: 10, padding: "11px 10px", background: "#211b17", color: "#fff", cursor: "pointer" }}>■ Arrêter</button>
           </div>
-          <form onSubmit={sendMessage} style={{ display: "flex", gap: 8, padding: 10, borderTop: "1px solid #38384a" }}>
-            <input value={question} onChange={(event) => setQuestion(event.target.value)} placeholder="Ex. : où voir les extraits TikTok ?" aria-label="Ta question" style={{ minWidth: 0, flex: 1, padding: "10px 11px", borderRadius: 9, border: "1px solid #4b4b60", background: "#1b1b29", color: "#fff" }} />
-            <button type="submit" style={{ padding: "0 13px", border: 0, borderRadius: 9, background: "#7950d8", color: "#fff", cursor: "pointer" }}>Envoyer</button>
-          </form>
         </section>
       )}
-      <button type="button" onClick={() => setIsOpen((open) => !open)} aria-expanded={isOpen} style={{ display: "block", marginLeft: "auto", border: "1px solid #b9a4ff", borderRadius: 999, padding: "13px 18px", color: "#fff", background: "linear-gradient(120deg,#5426a8,#173a75)", fontWeight: 700, cursor: "pointer", boxShadow: "0 5px 20px rgba(0,0,0,.35)" }}>
-        {isOpen ? "Fermer l’assistant" : "🤖 Assistant IA"}
+      <button type="button" onClick={() => setIsOpen((open) => !open)} aria-expanded={isOpen} style={{ display: "block", marginLeft: "auto", border: "1px solid #ffbd69", borderRadius: 999, padding: "13px 18px", color: "#1c1005", background: "linear-gradient(120deg,#ffb347,#ff7926)", fontWeight: 800, cursor: "pointer", boxShadow: "0 5px 20px rgba(0,0,0,.35)" }}>
+        {isOpen ? "Masquer le guide" : "🎬 Présentation du site"}
       </button>
     </div>
   );
@@ -1888,6 +1811,8 @@ export default function Page() {
           <a href="#serie-2">Romain Moretti 2</a>
           <a href="#isaac-wolf">Isaac Wolf</a>
           <a href="#marvel">Marvel</a>
+          <a href="/anciens-serveurs/">Anciens serveurs</a>
+          <a href="/partenaires/">Partenaires</a>
 
           <button
             type="button"

@@ -657,6 +657,18 @@ const marvelSeasons: MarvelSeason[] = [
         videoId: "pxbVXqKpvNs",
         description: "6éme épisode.",
       },
+{
+        number: 7,
+        title: "🎬 TITRE : Wolverine VS Robot Géant 🤖🔥 | Un Combat Explosif ! #7",
+        videoId: "ZuRP9Itsj-o",
+        description: "7éme épisode.",
+      },
+{
+        number: 8,
+        title: "Je suis désolé pour cette date, j’ai prêté mon jeu à mon frère 😂 Du coup, rendez-vous sur Horizon en attendant  #",
+        videoId: "",
+        description: " 19/11/2026 ! 😅.",
+      },
 ]
   },
 

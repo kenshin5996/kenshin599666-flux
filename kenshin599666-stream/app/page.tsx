@@ -1581,7 +1581,7 @@ function KenshinAssistant() {
   const [isOpen, setIsOpen] = useState(true);
   const [isSpeaking, setIsSpeaking] = useState(false);
 
-  const presentation = "Bienvenue sur le site Kenshin5996. Ici, tu peux découvrir plusieurs univers vidéo. Dans la partie Role Play, suis les aventures de Rayan Moretti et de Romain Moretti, leurs histoires, leurs missions et leurs mystères. Tu trouveras aussi des vidéos RP marrantes pour les moments plus légers. Dans la rubrique Marvel, découvre les aventures de Spider-Man réparties sur deux saisons, ainsi que Wolverine, avec six épisodes disponibles dans la saison trois. Parcours les saisons et sélectionne une vidéo pour la regarder. Tu peux également retrouver les chaînes YouTube, les lives Twitch, les extraits TikTok et les informations sur Team RDM. Bonne visite sur Kenshin5996 !";
+  const presentation = "Bienvenue sur le site Kenshin5996. Ici, tu peux découvrir plusieurs univers vidéo. Dans la partie Role Play, suis les aventures de Rayan Moretti et de Romain Moretti, leurs histoires, leurs missions et leurs mystères. Tu trouveras aussi des vidéos RP marrantes pour les moments plus légers. Attention : les vidéos Marvel ne sont plus présentées dans l’accueil. Elles sont désormais regroupées dans la page Archives Iron Man, où tu peux retrouver les saisons de Spider-Man et de Wolverine. Clique sur le lien Archives Iron Man dans le menu ou dans la catégorie dédiée pour les regarder. Tu peux également retrouver les chaînes YouTube, les lives Twitch, les extraits TikTok et les informations sur Team RDM. Bonne visite sur Kenshin5996 !";
 
   function speakPresentation() {
     if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
@@ -1632,12 +1632,9 @@ function KenshinAssistant() {
                 <p style={{ margin: "6px 0 0" }}>Une sélection de six vidéos RP pour retrouver les moments drôles.</p>
               </article>
               <article style={{ padding: 12, borderRadius: 12, background: "#21170f", border: "1px solid #513019" }}>
-                <strong style={{ color: "#ffb347" }}>🕷️ Marvel — Spider-Man</strong>
-                <p style={{ margin: "6px 0 0" }}>Deux saisons sont répertoriées : la saison 1 contient 13 épisodes et la saison 2 contient 15 épisodes de Marvel’s Spider-Man 2.</p>
-              </article>
-              <article style={{ padding: 12, borderRadius: 12, background: "#21170f", border: "1px solid #513019" }}>
-                <strong style={{ color: "#ffb347" }}>🐺 Marvel — Wolverine</strong>
-                <p style={{ margin: "6px 0 0" }}>Six épisodes sont disponibles dans Wolverine / Saison 3. La saison 4 est présente dans le catalogue mais ne contient pas encore d’épisodes.</p>
+                <strong style={{ color: "#ffb347" }}>🦾 Archives Iron Man — vidéos Marvel</strong>
+                <p style={{ margin: "6px 0 10px" }}>Information importante : les vidéos Marvel ont été déplacées. Tu retrouveras désormais les saisons de Spider-Man et de Wolverine dans la page Archives Iron Man, et non plus dans les catégories de l’accueil.</p>
+                <a href="/archives-iron-man/" style={{ display: "inline-block", color: "#17100a", background: "linear-gradient(120deg,#ffcf68,#ff7926)", padding: "9px 12px", borderRadius: 9, fontWeight: 800, textDecoration: "none" }}>Ouvrir les Archives Iron Man ↗</a>
               </article>
               <article style={{ padding: 12, borderRadius: 12, background: "#21170f", border: "1px solid #513019" }}>
                 <strong style={{ color: "#ffb347" }}>🌐 Réseaux et communauté</strong>

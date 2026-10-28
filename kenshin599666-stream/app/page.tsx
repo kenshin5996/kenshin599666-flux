@@ -1822,7 +1822,7 @@ export default function Page() {
           <a href="#rayan-moretti">Rayan Moretti</a>
           <a href="#serie-2">Romain Moretti 2</a>
           <a href="#isaac-wolf">Isaac Wolf</a>
-          <a href="#marvel">Marvel</a>
+          <a href="/archives-iron-man/">Archives Iron Man</a>
           <a href="/anciens-serveurs/">Anciens serveurs</a>
           <a href="/partenaires/">Partenaires</a>
 
@@ -2439,152 +2439,6 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="iproHeroSection section" id="marvel">
-        <div className="iproHeroBannerWrap">
-          <img
-            src="/image/banner-marvel.png"
-            alt="Marvel Spider-Man"
-            className="iproHeroBanner"
-          />
-          <div className="iproHeroBannerOverlay" />
-        </div>
-
-        <div className="iproHeroGrid">
-          <div className="iproHeroMain">
-            <span className="iproTag">MARVEL</span>
-            <h2>{currentMarvelSeason.title}</h2>
-            <p className="iproDescription">
-              Retrouve toutes mes vidéos Spider-Man et Marvel dans un format
-              multi-saisons, avec un lecteur principal et une liste complète
-              des épisodes.
-            </p>
-
-            <div className="iproActions">
-              <button
-                className="iproStartBtn"
-                type="button"
-                onClick={() => scrollToSection("marvel-saison")}
-              >
-                ▶ COMMENCER
-              </button>
-
-              <a
-                className="iproPlusBtn"
-                href={currentMarvelYoutubeUrl}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Voir sur YouTube"
-              >
-                +
-              </a>
-            </div>
-          </div>
-
-          <aside className="iproLinksCard">
-            <h3>MARVEL</h3>
-
-            <div className="iproLinksList">
-              {marvelSeasons.map((season) => (
-                <button
-                  key={season.season}
-                  type="button"
-                  onClick={() => {
-                    setSelectedMarvelSeason(season.season);
-                    setShowTwoLifeAd(true);
-                    if (season.episodes.length > 0) {
-                      setSelectedMarvelEpisode(season.episodes[0]);
-                    }
-                  }}
-                  className={`iproSeasonSwitchBtn ${
-                    selectedMarvelSeason === season.season ? "active" : ""
-                  }`}
-                >
-                  Saison {season.season}
-                </button>
-              ))}
-
-              <a
-                href="https://drive.google.com/file/d/1U8A0fjbYJgspaNBGj6UhIdfKWzSoa20C/view?usp=sharing"
-                target="_blank"
-                rel="noreferrer"
-                className="iproSeasonSwitchBtn"
-                style={{ textDecoration: "none", display: "block" }}
-              >
-                ▶ Regarder le Film Venom
-              </a>
-
-              <a
-                href="https://drive.google.com/file/d/1WsJ5lDwflZvVyYwVgcTmC2mtGp5UntHc/view?usp=sharing"
-                target="_blank"
-                rel="noreferrer"
-                className="iproSeasonSwitchBtn"
-                style={{ textDecoration: "none", display: "block" }}
-              >
-                ▶ Regarder le Film Spider-Man
-              </a>
-
-              <span style={{ fontSize: "13px", opacity: 0.8, lineHeight: 1.5 }}>
-                En cas de problème :
-                <br />
-                kenshin5996pro@gmail.com
-              </span>
-            </div>
-          </aside>
-        </div>
-      </section>
-
-      <section className="section iproSeasonSection" id="marvel-saison">
-        <div className="iproSeasonHeader">
-          <span className="iproSeasonBadge">
-            SAISON {currentMarvelSeason.season}
-          </span>
-        </div>
-
-        <div className="iproSeasonLayout">
-          <div className="iproSeasonPlayer">
-            <div className="iproPlayerFrame" style={{ position: "relative" }}>
-              {currentMarvelSeason.episodes.length > 0 && selectedMarvelEpisode.videoId ? (
-                <TwoLifeVideoFrame key={selectedMarvelEpisode.videoId} videoId={selectedMarvelEpisode.videoId} title={selectedMarvelEpisode.title} />
-              ) : (
-                <div className="emptyFavorites">
-                  <p>Aucune vidéo pour le moment.</p>
-                  <span>Cette saison sera remplie bientôt.</span>
-                </div>
-              )}
-            </div>
-
-            {currentMarvelSeason.episodes.length > 0 ? (
-              <div className="iproPlayerContent">
-                <span className="iproEpisodeLabel">
-                  ÉPISODE {selectedMarvelEpisode.number}
-                </span>
-                <h3>{selectedMarvelEpisode.title}</h3>
-                <p>{selectedMarvelEpisode.description}</p>
-              </div>
-            ) : (
-              <div className="iproPlayerContent">
-                <h3>{currentMarvelSeason.title}</h3>
-                <p>Les épisodes de Wolverine seront ajoutés ici bientôt.</p>
-              </div>
-            )}
-          </div>
-
-          <div className="iproEpisodesList">
-            {currentMarvelSeason.episodes.map((episode) => (
-              <SeasonEpisodeCard
-                key={`${currentMarvelSeason.season}-${episode.number}-${episode.videoId}`}
-                episode={episode}
-                isActive={
-                  selectedMarvelEpisode.number === episode.number &&
-                  selectedMarvelEpisode.videoId === episode.videoId
-                }
-                onClick={() => { setSelectedMarvelEpisode(episode); setShowTwoLifeAd(true); }}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="section" id="sponsor-twolife">
         <div className="rowHeader">
           <h2>Sponsors</h2>
@@ -2659,6 +2513,14 @@ export default function Page() {
           <h2>Catégories vidéos</h2>
           <div className="sectionLine" />
         </div>
+        <a className="starkArchiveLink" href="/archives-iron-man/">
+          <span className="starkArchiveIcon">✦</span>
+          <span>
+            <strong>ARCHIVES STARK · IRON MAN</strong>
+            <small>Retrouve les saisons Spider-Man et Wolverine dans une interface inspirée de l’armure Stark.</small>
+          </span>
+          <b aria-hidden="true">↗</b>
+        </a>
       </section>
 
       <VideoRow

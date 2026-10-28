@@ -1033,3 +1033,18 @@ img {
     font-size: 24px;
   }
 }
+
+/* Archives Iron Man / Stark Industries */
+.starkArchiveLink{
+  display:flex;align-items:center;gap:16px;margin:18px 0 28px;padding:20px 22px;
+  color:#fff1d1;text-decoration:none;border:1px solid rgba(255,181,61,.45);
+  background:radial-gradient(ellipse at 8% 50%,rgba(255,76,35,.18),transparent 40%),linear-gradient(110deg,#21100d,#100d10 68%,#21150b);
+  box-shadow:inset 0 0 28px rgba(255,95,35,.06),0 0 22px rgba(255,140,40,.05);transition:transform .2s,border-color .2s;
+}
+.starkArchiveLink:hover{transform:translateY(-2px);border-color:#ffb347}
+.starkArchiveLink>span:nth-child(2){display:flex;flex-direction:column;gap:7px;flex:1}
+.starkArchiveLink strong{font-size:13px;letter-spacing:1.3px;color:#ffc05a}
+.starkArchiveLink small{font-size:12px;line-height:1.6;color:#c7b8aa}
+.starkArchiveLink>b{font-size:24px;color:#ff6b3d}
+.starkArchiveIcon{display:grid;place-items:center;width:48px;height:48px;flex:0 0 48px;border:1px solid #b9472a;background:#35170f;color:#ffbf56;font-size:27px;box-shadow:0 0 20px #ff6b3d22}
+@media(max-width:600px){.starkArchiveLink{padding:15px;gap:11px}.starkArchiveLink small{font-size:10px}.starkArchiveLink strong{font-size:11px}.starkArchiveIcon{width:39px;height:39px;flex-basis:39px}}

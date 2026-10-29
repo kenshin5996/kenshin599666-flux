@@ -1,0 +1,1 @@
+Couleurs rouge-orangé : le composant J.A.R.V.I.S. utilise des accents rouge-orangé (#FF4C23 / #FF7045). Le fond sombre est conservé.

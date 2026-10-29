@@ -1,0 +1,11 @@
+RESTAURER L'ASSISTANCE QUI EXPLIQUE L'ACCUEIL — KENSHIN5996
+
+1. Fais une copie de sauvegarde de ton projet actuel.
+2. Dans ton projet Next.js, ouvre le dossier app/.
+3. Remplace app/page.tsx par le fichier page.tsx de cette archive.
+4. Ne remplace globals.css et layout.tsx que si tu veux aussi remettre les copies fournies ici. Si tu as fait des changements récents dans ces fichiers, garde tes versions actuelles.
+5. Enregistre puis redéploie le site.
+
+Cette version remet « Assistance Stark — Kenshin5996 » sur la page d'accueil. Elle présente les rubriques Role Play, RP marrant, Archives Iron Man (Spider-Man et Wolverine), les réseaux et Team RDM. Le bouton « Activer la voix Stark » lit la présentation à voix haute en français. Le navigateur doit prendre en charge la synthèse vocale.
+
+Le contenu existant de la page d'accueil et ses catégories sont conservés dans page.tsx. L'assistance est un guide de présentation, pas une IA conversationnelle.

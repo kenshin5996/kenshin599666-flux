@@ -119,11 +119,45 @@ export default function Home() {
     window.speechSynthesis.speak(utterance);
   }
 
+  function speakWelcomeScene() {
+    if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
+    window.speechSynthesis.cancel();
+    const voices = window.speechSynthesis.getVoices().filter((voice) => voice.lang.toLowerCase().startsWith("fr"));
+    const maleVoice = voices.find((voice) => /thomas|henri|paul|daniel|male|homme/i.test(voice.name)) || voices[0];
+    const femaleVoice = voices.find((voice) => /amelie|amélie|julie|marie|lea|léa|hortense|audrey|celine|céline|female|femme|sophie/i.test(voice.name)) || voices.find((voice) => voice !== maleVoice) || voices[0];
+    const dialogue: Array<{ role: "jarvis" | "pepper"; text: string }> = [
+      { role: "jarvis", text: "Bienvenue dans les archives. Je suis J.A.R.V.I.S., votre assistant de navigation. Je suis heureux de vous accueillir. Vous pouvez parcourir les collections, choisir une série, puis sélectionner une saison et un épisode. Chaque fiche vous aide à retrouver votre aventure préférée." },
+      { role: "jarvis", text: "La navigation est simple. Les archives Spider-Man et Wolverine sont organisées séparément. Vous pouvez parcourir les saisons, consulter les résumés et ouvrir les épisodes disponibles. Prenez le temps de découvrir les collections à votre rythme. Je peux également vous aider avec les commandes de l'assistant." },
+      { role: "jarvis", text: "La présentation du site est maintenant terminée. Veuillez m'excuser : je reçois un appel entrant prioritaire. L'appel provient de Madame Pepper Potts, l'épouse de Monsieur Tony Stark. J'établis une communication sécurisée." },
+      { role: "pepper", text: "Bonjour, J.A.R.V.I.S. C'est Pepper Potts. Je voulais prendre un instant pour souhaiter la bienvenue à la personne qui visite les archives. Est-ce que tout se passe bien ? Avez-vous pu lui présenter les collections ?" },
+      { role: "jarvis", text: "Bonjour, Madame Potts. Tout se déroule parfaitement. Je viens de présenter le fonctionnement des archives et les possibilités de navigation. Notre visiteur peut maintenant choisir librement la collection qu'il souhaite découvrir." },
+      { role: "pepper", text: "Parfait. Alors transmettez-lui mes salutations. À vous qui découvrez ces archives, je souhaite une excellente visite. Profitez des épisodes, explorez les différentes saisons et choisissez l'univers qui vous plaît. Tony serait heureux de savoir que ses archives accueillent des visiteurs curieux." },
+      { role: "jarvis", text: "Votre message sera transmis, Madame. Je resterai disponible pour assister notre invité. Je vous remercie pour cet appel." },
+      { role: "pepper", text: "Avec plaisir, J.A.R.V.I.S. Je vous laisse reprendre votre travail. Bonne continuation, et encore bienvenue à notre visiteur. Au revoir." },
+      { role: "jarvis", text: "Au revoir, Madame Potts. Fin de la communication sécurisée. Cher visiteur, vous pouvez maintenant poursuivre votre visite en découvrant les archives Spider-Man ou Wolverine. Sélectionnez simplement la collection de votre choix, puis explorez ses saisons et ses épisodes. Je vous souhaite une excellente visite." },
+    ];
+    let index = 0;
+    const next = () => {
+      if (index >= dialogue.length) return;
+      const line = dialogue[index++];
+      const utterance = new SpeechSynthesisUtterance(line.text);
+      utterance.lang = "fr-FR";
+      utterance.rate = line.role === "jarvis" ? 0.9 : 0.96;
+      utterance.pitch = line.role === "jarvis" ? 0.82 : 1.18;
+      const voice = line.role === "jarvis" ? maleVoice : femaleVoice;
+      if (voice) utterance.voice = voice;
+      utterance.onend = () => window.setTimeout(next, 650);
+      utterance.onerror = () => window.setTimeout(next, 650);
+      window.speechSynthesis.speak(utterance);
+    };
+    next();
+  }
+
   function openAssistant() {
     setAssistantOpen(true);
-    const intro = "Bonjour. Je suis J.A.R.V.I.S., votre assistant de navigation. Je peux vous guider dans les archives Stark, filtrer les séries et les saisons, puis ouvrir directement un épisode. Dites par exemple : recherche Wolverine, saison deux.";
+    const intro = "Bienvenue dans les archives. J.A.R.V.I.S. vous présente le site, puis reçoit un appel de Madame Pepper Potts.";
     setAssistantAnswer(intro);
-    speak(intro);
+    speakWelcomeScene();
   }
 
   const filtered = useMemo(() => episodes.filter((ep) =>
